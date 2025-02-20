@@ -1,15 +1,3 @@
-# import tensorflow as tf
-
-# gcs_uri = "gs://waymo_open_dataset_v_1_4_3/individual_files/training/segment-10017090168044687777_6380_000_6400_000_with_camera_labels.tfrecord"
-
-# # Open and read the TFRecord file directly from GCS
-# raw_dataset = tf.data.TFRecordDataset(gcs_uri)
-
-# for raw_record in raw_dataset.take(1):
-#     print(raw_record)  # Raw protobuf data
-
-#//opt/homebrew/Cellar/bazelisk/1.25.0
-
 import tensorflow as tf
 from waymo_open_dataset import dataset_pb2 as open_dataset
 import numpy as np
@@ -25,7 +13,6 @@ GCS_TFRECORD_PATH = "gs://waymo_open_dataset_v_1_4_3/individual_files/training/s
 raw_dataset = tf.data.TFRecordDataset(GCS_TFRECORD_PATH)
 
 def parse_tfrecord_fn(raw_record):
-    """Parses a single TFRecord protobuf from GCS."""
     frame = open_dataset.Frame()
     frame.ParseFromString(raw_record.numpy())
 
@@ -39,11 +26,8 @@ def parse_tfrecord_fn(raw_record):
 
     for camera_labels in frame.camera_labels:
         for label in camera_labels.labels:
-            labels.append({
-                "type": label.type,
-                "box": (label.box.center_x, label.box.center_y, label.box.width, label.box.height)
-            })
-
+            labels.append({"type": label.type, "box": (label.box.center_x, label.box.center_y, label.box.width, label.box.height)})
+    
     return images, labels
 
 class WaymoDataset(Dataset):
