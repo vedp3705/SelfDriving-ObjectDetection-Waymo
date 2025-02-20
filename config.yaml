@@ -1,0 +1,5 @@
+path: waymo_yolo_dataset
+train: images/train
+val: images/val
+nc: 3
+names: ["vehicle", "pedestrian", "cyclist"]

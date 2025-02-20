@@ -1,0 +1,10 @@
+tensorflow-macos==2.11.0
+torch
+torchvision
+ultralytics
+opencv-python
+matplotlib
+protobuf
+keras
+googleapis-common-protos
+google-api-core
