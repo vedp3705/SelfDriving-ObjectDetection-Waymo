@@ -1,7 +1,7 @@
 # Real-Time Object Detection for Autonomous Driving with YOLO & Waymo Dataset
 
 ## Project Overview
-This project focuses on **real-time object detection** for **autonomous driving** using **YOLOv8**, trained on the **Waymo Open Dataset**. The goal is to accurately detect:
+This project focuses on real-time object detection for autonomous driving using YOLOv8, trained on the Waymo Open Dataset. The goal is to accurately detect:
 
 - **Vehicles**
 - **Pedestrians**
